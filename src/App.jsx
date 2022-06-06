@@ -29,7 +29,7 @@ function App() {
         <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode}/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/product' element={<Product/>}/>
+        <Route path='/products/:product' element={<Product/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
