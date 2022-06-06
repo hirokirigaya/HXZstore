@@ -2,8 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.main`
   max-width: 1280px;
-  margin: 0 auto;
-  margin-top: 5rem;
+  margin: 7rem auto 5rem auto;
   min-height: 90vh;
 
   .container-products {
@@ -25,6 +24,10 @@ export const Container = styled.main`
         display: flex;
         align-items: center;
         justify-content: center;
+
+        img {
+          border-radius: 0.4rem;
+        }
       }
 
       .desc {
@@ -32,6 +35,10 @@ export const Container = styled.main`
         flex-direction: column;
         justify-content: space-between;
         gap: 2rem;
+
+        .btn-buy {
+          min-width: 150px;
+        }
         .title-stars {
           display: flex;
           gap: 3rem;
@@ -58,11 +65,12 @@ export const Container = styled.main`
 
           .discount-price-count {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
 
             .discount-price {
               gap: 0.8rem;
               display: flex;
+              align-items: center;
 
               .discount {
                 display: flex;
@@ -84,6 +92,15 @@ export const Container = styled.main`
             }
             .count {
               display: flex;
+              align-items: center;
+
+              button {
+                border: none;
+                background-color: transparent;
+                color: ${({ theme }) => theme.primary};
+                font-size: 2.6rem;
+                font-weight: 700;
+              }
 
               input[type='number']::-webkit-inner-spin-button {
                 -webkit-appearance: none;
@@ -91,16 +108,33 @@ export const Container = styled.main`
 
               input {
                 text-align: center;
+                color: ${({ theme }) => theme.primary};
                 outline: none;
+                font-size: 2.4rem;
                 font-weight: 700;
                 border: none;
                 width: 30px;
+                background-color: transparent;
+                margin-bottom: .5rem;
               }
             }
           }
 
           .quant-buy {
             display: flex;
+          }
+
+        }
+        @media (min-width: 830px) {
+          .buy {
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+
+            .discount-price-count {
+              width: 100%;
+              justify-content: space-between;
+            }
           }
         }
         .desc-texts {
@@ -123,15 +157,16 @@ export const Container = styled.main`
     .container-specifications {
       margin-top: 5rem;
 
-    .specifications {
-      overflow-x: scroll;
-
       h2 {
         font-size: 2rem;
         text-align: center;
         color: ${({ theme }) => theme.primary};
         margin-bottom: 2rem;
       }
+
+    .specifications {
+      overflow-x: scroll;
+
       table {
         width: 100%;
         background-color: ${({ theme }) => theme.dark};
@@ -149,6 +184,8 @@ export const Container = styled.main`
           tr {
             width: 100%;
             td {
+              height: 50px;
+              padding: 1rem;
               min-width: 200px;
             }
           }

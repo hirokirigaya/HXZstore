@@ -1,23 +1,47 @@
 import { CartSection } from './styles'
 import Pc from '/imgs/pc1.png'
-import { FiPlus as Plus, FiMinus as Minus } from 'react-icons/fi'
+import { useState } from 'react';
+import { FiPlus as Plus, FiMinus as Minus, FiTrash2 as Trash } from 'react-icons/fi'
 
 
 
 export function Cart() {
+  const [value, setValue] = useState(0);
+  
+  const handleSumValue = () => {
+    setValue(value != 0 ? value + 1 : value + 1)
+  }
+  const handleSubValue = () => {
+    setValue(value === 0 ? 0 : value - 1)
+  }
+
+  const Change = (e) => {
+    let change = e.target.value;
+    setValue(parseInt(change));
+  };
+
   return (
     <CartSection>
     <section className='cart-section'>
     <table>
       <tbody className='cart-container'>
-   <tr>
-     <td><img src={Pc} className='cart-img' /></td>
-     <td><h2>Cobault</h2></td>
-     <td></td> 
-     <td className='cart-counter'><button><Minus/></button>0<button><Plus/></button></td>
-     <td>$ 1.500,00</td>
-   </tr>
-   </tbody>
+          <tr>
+            <td><img src={Pc} className='cart-img' /></td>
+            <td><h2>Cobault</h2></td>
+            <td></td> 
+            <td className='cart-counter'>
+              <button onClick={handleSubValue}>
+                <Minus/>
+              </button>
+              <input type="number" className='input-counter' value={value} onChange={Change}/>
+              <button onClick={handleSumValue}>
+                <Plus/>
+              </button>
+            </td>
+            <td className='price'><p><span>$</span>1.500<span>,00</span></p></td>
+            <td className='cart-trash'><button><Trash /></button></td>
+          </tr>
+      </tbody>
     </table>
     </section>
     <section className='cart-aside'>

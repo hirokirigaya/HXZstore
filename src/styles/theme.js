@@ -12,6 +12,7 @@ const theme = {
     btnbg: '#0E1116',
     darkblue: '#0E1116',
     pink: '#FF5E5E',
+    hoveruser: '#38384F'
   },
 
   dark: {
@@ -27,6 +28,7 @@ const theme = {
     btntext: '#fff',
     darkblue: '#0A090E',
     pink: '#FF5E5E',
+    hoveruser: '#B7B7BD'
   },
 };
 

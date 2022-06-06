@@ -1,54 +1,106 @@
 import styled from 'styled-components'
 
 export const CartSection = styled.main`
-display: grid;
-grid-gap: 10rem;
-grid-template-columns: 1fr 1fr 1fr;
-max-width: 1280px;
-margin: 0 auto;
-margin-top: 10rem;
-height: 100vh;
-padding: 1rem;
+  display: grid;
+  grid-gap: 10rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1280px;
+  margin: 10rem auto;
+  min-height: 80vh;
+  padding: 1rem;
 
-.cart-section {
-  padding: 1rem 0.3rem;
-  grid-column: 1/3;
-  max-width: 900px;
-  
-  table {
-    background-color: ${props => props.theme.dark};
-    width: 100%;
-  }
+  .cart-section {
+    padding: 1rem 0.3rem;
+    grid-column: 1/3;
+    max-width: 900px;
 
-  .cart-container {
-    display: flex;
-    color: ${props => props.theme.primary};
+    table {
+      background-color: ${(props) => props.theme.dark};
+      width: 100%;
+    }
 
-    .cart-counter {
+    .cart-container {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      color: ${(props) => props.theme.primary};
 
-      button {
+      .price {
+        p {
+          font-size: 2rem;
+          color: ${(props) => props.theme.primary};
+
+          span {
+            font-size: 1.6rem;
+            color: ${(props) => props.theme.secondary};
+          }
+        }
+      }
+
+      .cart-counter {
         display: flex;
         align-items: center;
-        border-radius: 50%;
-        padding: 0.7rem;
-        background-color: #ffffff;
-        border: none;
+        gap: 1.5rem;
+
+        input {
+          width: 30px;
+          font-weight: 700;
+          text-align: center;
+          border: none;
+          outline: none;
+          background-color: ${(props) => props.theme.dark};
+          color: ${(props) => props.theme.primary};
+        }
+
+        input::placeholder {
+          color: ${(props) => props.theme.primary};
+        }
+
+        input[type='number']::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          border-radius: 50%;
+          padding: 0.7rem;
+          background-color: #ffffff;
+          border: none;
+        }
       }
-    }
 
-    td {
-      width: 100%;
-    }
+      .cart-trash {
+        width: 30px;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 2rem;
+        button {
+          color: ${(props) => props.theme.primary};
+        }
+      }
 
-    
-    tr {
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
+      .cart-trash {
+        button {
+          display: flex;
+          align-items: center;
+          border: none;
+          font-size: 2rem;
+          background-color: transparent;
+        }
+      }
+      td {
+        width: 100%;
+      }
+      @media (max-width: 900px) {
+        td {
+          min-width: 120px;
+        }
+      }
+
+      tr {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
 
       .cart-img {
         width: 10rem;
@@ -57,16 +109,31 @@ padding: 1rem;
     }
   }
 
+  @media (max-width: 900px) {
+    .cart-section {
+      overflow-x: scroll;
+    }
+  }
+
   .cart-aside {
     margin-top: 1rem;
-    background-color: ${props => props.theme.dark};
-    width: 80%;
-    height: 55%;
+
+    aside {
+      display: flex;
+      justify-content: flex-end;
+    } //mover
+
+    @media (max-width: 550px) {
+      aside {
+        justify-content: center;
+      }
+    }
 
     .aside-container {
-      color: ${props => props.theme.primary};
+      width: 80%;
+      background-color: ${(props) => props.theme.dark};
+      color: ${(props) => props.theme.primary};
       padding: 3.5rem 2rem;
-
 
       .button-aside {
         display: flex;
@@ -74,11 +141,19 @@ padding: 1rem;
         padding-top: 3rem;
 
         .pink-btn {
-          background-color: #FF5E5E;
+          background-color: #ff5e5e;
+        }
+
+        .pink-btn:hover {
+          background-color: #ff5e7e;
         }
 
         .dark-btn {
-          background-color: #0A090E;
+          background-color: #0a090e;
+        }
+
+        .dark-btn:hover {
+          background-color: #0E1116;
         }
 
         button {
@@ -99,44 +174,83 @@ padding: 1rem;
           width: 100%;
           border: none;
           padding: 1.5rem;
-          color: ${props => props.theme.primary};
-          border-bottom: 1px solid ${props => props.theme.primary};
-          background-color: ${props => props.theme.dark};
+          color: ${(props) => props.theme.primary};
+          border-bottom: 1px solid ${(props) => props.theme.primary};
+          background-color: ${(props) => props.theme.dark};
           text-transform: uppercase;
           outline: none;
         }
 
         input::placeholder {
           font-size: 1.3rem;
-          color: ${props => props.theme.primary};
+          color: ${(props) => props.theme.primary};
         }
 
         input[type='number']::-webkit-inner-spin-button {
           -webkit-appearance: none;
         }
 
-      .input-two {
-        display: flex;
-        gap: 2rem;
-      }
+        .input-two {
+          display: flex;
+          gap: 2rem;
+        }
+
+        @media (max-width: 1250px) {
+          .input-two {
+            gap: 0;
+          }
+        }
       }
 
       .checkout-btn {
         margin-top: 5rem;
         text-transform: uppercase;
-        
+
         button {
           text-transform: uppercase;
           margin-top: 3rem;
           width: 100%;
           padding: 1rem;
-          background-color: #0A090E;
+          background-color: #0a090e;
           border: none;
           border-radius: 4px;
           color: #ffffff;
           font-weight: 600;
         }
       }
+
+      .checkout-btn {
+        button:hover {
+         background-color: #0E1116;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1250px) {
+    .input-aside {
+      .input-two {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .button-aside {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  //media main
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 550px) {
+    .cart-aside {
+      grid-column: 1/3;
     }
   }
 `

@@ -28,7 +28,7 @@ const server = createServer({
       {
         id: 2,
         slug: 'carbon',
-        title: 'Cobault',
+        title: 'Carbon',
         slogan: 'The best config',
         category: "computer",
         img: '/imgs/pc2.png',
@@ -44,8 +44,8 @@ const server = createServer({
       },
       {
         id: 3,
-        slug: 'carbon',
-        title: 'Carbon',
+        slug: 'kronos',
+        title: 'Kronos',
         slogan: 'The best config',
         category: "computer",
         img: '/imgs/pc3.png',
@@ -114,43 +114,53 @@ const server = createServer({
     this.get('/computersvitrine', () => [
       {
         id: 1,
+        slug: 'cobault',
         title: 'Cobault',
         img: '/imgs/pc1.png',
         price: 1300,
+        discount: 20,
       },
       {
         id: 2,
+        slug: 'carbon',
         title: 'Carbon',
         img: '/imgs/pc2.png',
         price: 1899,
-
+        discount: 40,
       },
       {
         id: 3,
+        slug: 'kronos',
         title: 'Kronos',
         img: '/imgs/pc3.png',
         price: 1899,
+        discount: 40,
       }
     ]),
     this.get('/peripheralsvitrine', () => [
       {
         id: 1,
+        slug: 'hero',
         title: 'Hero',
         img: '/imgs/mouse.png',
         price: 134,
+        discount: 40,
       },
       {
         id: 2,
+        slug: 'eagle',
         title: 'Eagle',
         img: '/imgs/phone1.png',
         price: 199,
-
+        discount: 40,
       },
       {
         id: 3,
+        slug: 'howk',
         title: 'Howk',
         img: '/imgs/phone2.png',
         price: 199,
+        discount: 40,
       }
     ])
   }

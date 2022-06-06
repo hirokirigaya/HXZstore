@@ -81,7 +81,7 @@ export function Navbar({ toggleTheme, isDarkMode }) {
           </div>
           <div className="container-icons">
             <button className="buttons">
-              <Link to="/cart">
+              <Link to="/cart"  className="buttons">
                 <Cart />
               </Link>
             </button>

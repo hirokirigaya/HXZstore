@@ -43,13 +43,13 @@ export function Products() {
             {products?.map((product) => {
               return (
                 <div className="product" key={product.id}>
-                  <Link to="/">
+                  <Link to={`/product/${product.slug}`}>
                     <img src={product.img} alt="computer" />
                     <div className="texts">
                       <p className="title">{product.title}</p>
                       <p className="price">
                         <span>$</span>
-                        {product.price}
+                        {Math.floor(product.price - (product.discount / 100 * product.price))}
                         <span>,00</span>
                       </p>
                     </div>

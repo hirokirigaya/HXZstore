@@ -86,6 +86,12 @@ export const Header = styled.header`
           }  
         }
 
+        .dropdown-user{
+          button:hover {
+          background-color: ${props => props.theme.hoveruser};
+        }
+      }
+
         @media(min-width: 900px) {
           .dropdown-user {
             position: absolute;

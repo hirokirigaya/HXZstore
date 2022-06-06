@@ -48,13 +48,13 @@ export function Home() {
           <div className="content-responsive">
             {computers?.map((computer) => (
               <div className="computer-container" key={computer.id}>
-                <Link to="/">
+                <Link to={`/products/${computer.slug}`}>
                   <img src={computer.img} className="pcone" />
                   <div className="price">
                     <p className="title">{computer.title}</p>
                     <p className="price-info">
                       <span>$</span>
-                      {computer.price}
+                      {Math.floor(computer.price - (computer.discount / 100 * computer.price))}
                       <span>,00</span>
                     </p>
                   </div>
@@ -70,13 +70,13 @@ export function Home() {
           <div className="content-responsive">
             {peripherals?.map((peripheral) => (
               <div className="computer-container" key={peripheral.id}>
-                <Link to="/">
+                <Link to={`/products/${peripheral.slug}`}>
                   <img src={peripheral.img} className="pcone" />
                   <div className="price">
                     <p className="title">{peripheral.title}</p>
                     <p className="price-info">
                       <span>$</span>
-                      {peripheral.price}
+                      {Math.floor(peripheral.price - (peripheral.discount / 100 * peripheral.price))}
                       <span>,00</span>
                     </p>
                   </div>

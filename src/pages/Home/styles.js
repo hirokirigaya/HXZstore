@@ -8,8 +8,9 @@ export const Container = styled.main`
       color: #ffffff;
       display: flex;
       flex-direction: column;
-      font-size: 1.8rem;
+      font-size: 3.8rem;
       position: relative;
+
 
       .banner-img {
         width: 100%;
@@ -56,12 +57,16 @@ export const Container = styled.main`
           border-radius: 5px;
           cursor: pointer;
           font-weight: bold;
-          font-size: 1.3rem;
+          font-size: 1.8rem;
           text-transform: uppercase;
-
+          
           svg {
             color: #ffffff;
           }
+        }
+
+        button:hover {
+          background-color:  #333d43;
         }
       }
     }

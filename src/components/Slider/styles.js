@@ -25,7 +25,7 @@ export const ContainerSlider = styled.section`
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 3rem;
     padding-top: 0.5rem;
     color: #fff;
   }
@@ -38,7 +38,7 @@ export const ContainerSlider = styled.section`
     padding: 1rem;
     border: none;
     color: #fff;
-    font-size: 3rem;
+    font-size: 5rem;
     background-color: transparent;
   }
     .slider-img {
