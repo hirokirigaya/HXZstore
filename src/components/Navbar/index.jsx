@@ -26,7 +26,7 @@ const navigationLinks = [
     id: 3,
     name: 'ABOUT',
     link: '/',
-  }
+  },
 ]
 
 export function Navbar({ toggleTheme, isDarkMode }) {
@@ -81,7 +81,9 @@ export function Navbar({ toggleTheme, isDarkMode }) {
           </div>
           <div className="container-icons">
             <button className="buttons">
-              <Cart />
+              <Link to="/cart">
+                <Cart />
+              </Link>
             </button>
             <div className="buttons" onClick={toggleDropdown}>
               <button className="user">
