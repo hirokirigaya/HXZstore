@@ -11,7 +11,7 @@ const CustomCheckbox = styled.div`
     display: none;
   }
 
-  input + label:before {
+  input[type= 'checkbox'] + label:before {
     content: '';
     width: 20px;
     height: 20px;
@@ -24,7 +24,7 @@ const CustomCheckbox = styled.div`
     border: none;
   }
   
-  input:checked + label:before {
+  input[type= 'checkbox']:checked + label:before {
     background-image: url('./imgs/CheckBox.svg');
     background-position: center;
     background-repeat: no-repeat;

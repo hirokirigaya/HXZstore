@@ -6,19 +6,21 @@ import { useParams } from 'react-router-dom'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { cartStore } from '../../providers/useProducts'
 import { NotExist } from '../../components/NotExist'
+import { Loading } from '../../components/Loading'
 
 export function Product() {
   const [products, setProducts] = useState()
-  const [productQtd, setProductQtd] = useState(0)
+  const [productQtd, setProductQtd] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const {state, dispatch, addItemCart} = useContext(cartStore)
+  const {addItemCart} = useContext(cartStore)
 
 
   const handleSumValue = () => {
     setProductQtd(productQtd != 0 ? productQtd + 1 : productQtd + 1)
   }
   const handleSubValue = () => {
-    setProductQtd(productQtd === 0 ? 0 : productQtd - 1)
+    setProductQtd(productQtd === 1 ? 1 : productQtd - 1)
   }
 
   const Change = (e) => {
@@ -28,7 +30,10 @@ export function Product() {
 
 
   useEffect(() => {
-    api.get('/products').then((response) => setProducts(response.data))
+    api.get('/products').then((response) => {
+      setProducts(response.data) 
+      setIsLoading(false)
+    })
   }, [])
   
   let params = useParams()
@@ -38,9 +43,9 @@ export function Product() {
     console.log(product)
   return (
     <>
-    {product?.length > 0 ?
+      {isLoading && <Loading/> } 
+      { !isLoading && product?.length > 0 &&
     <Container>
-      {product != undefined &&
         <section className="container-products">
           <div className="content-product">
             <div className="img">
@@ -88,6 +93,7 @@ export function Product() {
                       slug: product[0].slug,
                       quant: productQtd, 
                       img: product[0].img,
+                      discount: product[0].discount,
                     }
                   )}}}/>
                 </div>
@@ -116,8 +122,9 @@ export function Product() {
             </div>
           </section>
         </section>
+    </Container> 
         }
-    </Container> : <NotExist content="Product don't found" haveButton={false}/>}
+    {product?.length == 0 && !isLoading && <NotExist content="Product don't found" haveButton={false}/>}
     </>
   )
 }

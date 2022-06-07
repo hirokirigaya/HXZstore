@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FilterTab } from '../../components/Filter'
 import { FilterDesk } from '../../components/FilterDesk'
+import { Loading } from '../../components/Loading'
 
 export function Products() {
   const [products, setProducts] = useState()
@@ -39,6 +40,7 @@ export function Products() {
           <div className="filter-desktop">
             <FilterDesk/>
           </div>
+          {products === undefined ? <Loading/> :
           <div className="products">
             {products?.map((product) => {
               return (
@@ -58,6 +60,7 @@ export function Products() {
               )
             })}
           </div>
+          }
         </section>
       </section>
     </Container>

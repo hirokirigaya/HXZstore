@@ -51,6 +51,8 @@ export const Header = styled.header`
         background: transparent;
         color: ${(props) => props.theme.primary};
 
+        
+
         .user {
           color: ${(props) => props.theme.primary};
           border: none;
@@ -77,43 +79,47 @@ export const Header = styled.header`
             border-radius: 4px;
             padding: 0.5rem 1rem;
             cursor: pointer;
+
             a {
               text-decoration: none;
               color: ${(props) => props.theme.bg};
               text-transform: uppercase;
               font-weight: 600;
             }
-          }  
+          }
         }
 
-        .dropdown-user{
-          button:hover {
-          background-color: ${props => props.theme.hoveruser};
+        .dropdown-user {
+          button {
+            transition: filter ease-in-out 0.2s;
+            &:hover {
+              filter: brightness(0.9);
+            }
+          }
         }
-      }
 
-        @media(min-width: 900px) {
+        @media (min-width: 900px) {
           .dropdown-user {
             position: absolute;
             right: 0.5%;
           }
         }
 
-        @media(min-width: 1300px) {
+        @media (min-width: 1300px) {
           .dropdown-user {
             position: absolute;
             right: 3%;
           }
         }
 
-        @media(min-width: 1500px) {
+        @media (min-width: 1500px) {
           .dropdown-user {
             position: absolute;
             right: 8%;
           }
         }
 
-        @media(min-width: 1700px) {
+        @media (min-width: 1700px) {
           .dropdown-user {
             position: absolute;
             right: 16%;
@@ -125,17 +131,19 @@ export const Header = styled.header`
     .moon__sun {
       display: flex;
       align-items: center;
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
+      padding: 0.2rem;
       color: ${(props) => props.theme.btntext};
       background: ${(props) => props.theme.button};
       border: none;
       border-radius: 4px;
       cursor: pointer;
       transition: filter 0.2s;
-    }
-    .moon__sun:hover {
-      filter: brightness(0.9);
+
+      &:hover {
+        filter: brightness(0.9);
+      }
     }
 
     svg {

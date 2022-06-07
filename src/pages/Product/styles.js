@@ -165,7 +165,7 @@ export const Container = styled.main`
       }
 
     .specifications {
-      overflow-x: scroll;
+      overflow-x: auto;
 
       table {
         width: 100%;

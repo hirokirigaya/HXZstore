@@ -79,8 +79,8 @@ function reducer(state, action) {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  
-  const addItemCart = ({ title, price, slug, quant, id, img }) => {
+
+  const addItemCart = ({ title, price, slug, quant, id, img, discount }) => {
     dispatch({
       type: 'ADD_ITEM_CART',
       payload: {
@@ -90,6 +90,7 @@ export const CartProvider = ({ children }) => {
         slug: slug,
         quant: quant,
         img: img,
+        discount: discount,
       },
     })
   }

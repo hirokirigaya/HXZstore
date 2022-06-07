@@ -25,6 +25,7 @@ export const CartSection = styled.main`
       color: ${(props) => props.theme.primary};
 
       .price {
+        text-align: center;
         p {
           font-size: 2rem;
           color: ${(props) => props.theme.primary};
@@ -72,8 +73,8 @@ export const CartSection = styled.main`
       .cart-trash {
         width: 30px;
         display: flex;
-        justify-content: flex-end;
-        padding-right: 2rem;
+        justify-content: center;
+        padding: 0.3rem 2rem;
         button {
           color: ${(props) => props.theme.primary};
         }
@@ -115,7 +116,9 @@ export const CartSection = styled.main`
 
   @media (max-width: 900px) {
     .cart-section {
-      overflow-x: scroll;
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: 450px;
     }
   }
 

@@ -2,7 +2,6 @@ import { CartSection } from './styles'
 import { cartStore } from '../../providers/useProducts';
 import { useContext, useState } from 'react';
 import { FiPlus as Plus, FiMinus as Minus, FiTrash2 as Trash } from 'react-icons/fi'
-import styled from 'styled-components'
 import { NotExist } from '../../components/NotExist';
 
 export function Cart() {
@@ -23,6 +22,9 @@ export function Cart() {
     })
   }
   const handleSubValue = (item) => {
+    if(item.quant == 1) {
+      return;
+    }
     dispatch({
       type: 'SUB_ITEM_CART',
       payload: {
@@ -68,7 +70,7 @@ export function Cart() {
                 <Plus/>
               </button>
             </td>
-            <td className='price'><p><span>$</span>{item.price}<span>,00</span></p></td>
+            <td className='price'><p><span>$</span>{Math.floor((item.price - (item.discount / 100 * item.price )) * item.quant)}<span>,00</span></p></td>
             <td className='cart-trash'><button onClick={() => removeItemCart(item)}><Trash /></button></td>
           </tr>
           ))}

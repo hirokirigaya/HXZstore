@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.main`
   min-height: 100vh;
-  margin-top: 10rem;
+  margin: 10rem 0rem;
 
   .filter-desktop {
     display: none;
