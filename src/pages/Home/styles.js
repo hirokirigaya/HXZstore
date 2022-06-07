@@ -8,7 +8,7 @@ export const Container = styled.main`
       color: #ffffff;
       display: flex;
       flex-direction: column;
-      font-size: 3.8rem;
+      font-size: 2.4rem;
       position: relative;
 
 
@@ -41,6 +41,12 @@ export const Container = styled.main`
           max-width: 1280px;
           width: 100%;
           margin: 0 auto;
+
+        }
+        @media (min-width: 600px) {
+          .content-text {
+            font-size: 3rem;
+          }
         }
       }
       a {

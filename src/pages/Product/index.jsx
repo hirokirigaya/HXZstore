@@ -1,25 +1,31 @@
 import { Container } from './styles'
 import { api } from '../../services/api'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ButtonForm } from '../../components/Button'
 import { useParams } from 'react-router-dom'
 import { FiMinus, FiPlus } from 'react-icons/fi'
+import { cartStore } from '../../providers/useProducts'
+import { NotExist } from '../../components/NotExist'
 
 export function Product() {
   const [products, setProducts] = useState()
-  const [value, setValue] = useState(0)
+  const [productQtd, setProductQtd] = useState(0)
+
+  const {state, dispatch, addItemCart} = useContext(cartStore)
+
 
   const handleSumValue = () => {
-    setValue(value != 0 ? value + 1 : value + 1)
+    setProductQtd(productQtd != 0 ? productQtd + 1 : productQtd + 1)
   }
   const handleSubValue = () => {
-    setValue(value === 0 ? 0 : value - 1)
+    setProductQtd(productQtd === 0 ? 0 : productQtd - 1)
   }
 
   const Change = (e) => {
     let change = e.target.value;
-    setValue(parseInt(change));
+    setProductQtd(parseInt(change));
   };
+
 
   useEffect(() => {
     api.get('/products').then((response) => setProducts(response.data))
@@ -29,10 +35,12 @@ export function Product() {
   const productId = params.product
   
   const product = products?.filter((product) => product.slug === productId)
-
+    console.log(product)
   return (
+    <>
+    {product?.length > 0 ?
     <Container>
-      {product != undefined && (
+      {product != undefined &&
         <section className="container-products">
           <div className="content-product">
             <div className="img">
@@ -53,7 +61,7 @@ export function Product() {
                     <span className="discount">{product[0]?.discount}%</span>
                     <p className="price">
                       <span>$</span>
-                      {Math.floor(product[0].price - (product[0]?.discount / 100 * product[0]?.price ))} 
+                      {Math.floor(product[0]?.price - (product[0]?.discount / 100 * product[0]?.price ))} 
                         
                       <span>,00</span>
                     </p>
@@ -65,14 +73,23 @@ export function Product() {
                       name="quant"
                       id="quant"
                       min="0"
-                      value={value}
+                      value={productQtd}
                       onChange={Change}
                     />
                     <button onClick={handleSumValue}><FiPlus/></button>
                   </div>
                 </div>
                 <div className="btn-buy">
-                  <ButtonForm text="Add to Cart" />
+                  <ButtonForm text="Add to Cart" buttonProps={{onClick: () => {addItemCart(
+                    {
+                      id: product[0].id,
+                      title: product[0].title,
+                      price: product[0].price,
+                      slug: product[0].slug,
+                      quant: productQtd, 
+                      img: product[0].img,
+                    }
+                  )}}}/>
                 </div>
               </div>
             </div>
@@ -99,7 +116,8 @@ export function Product() {
             </div>
           </section>
         </section>
-      )}
-    </Container>
+        }
+    </Container> : <NotExist content="Product don't found" haveButton={false}/>}
+    </>
   )
 }

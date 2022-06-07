@@ -1,46 +1,77 @@
 import { CartSection } from './styles'
-import Pc from '/imgs/pc1.png'
-import { useState } from 'react';
+import { cartStore } from '../../providers/useProducts';
+import { useContext, useState } from 'react';
 import { FiPlus as Plus, FiMinus as Minus, FiTrash2 as Trash } from 'react-icons/fi'
-
-
+import styled from 'styled-components'
+import { NotExist } from '../../components/NotExist';
 
 export function Cart() {
   const [value, setValue] = useState(0);
-  
-  const handleSumValue = () => {
-    setValue(value != 0 ? value + 1 : value + 1)
+
+  const {state, dispatch} = useContext(cartStore);
+
+
+  const cartItems = state.cart.cartItems
+ 
+  const handleSumValue = (item) => {
+    dispatch({
+      type: 'SUM_ITEM_CART',
+      payload: {
+        id: item.id,
+        quant: item.quant + 1,
+      }
+    })
   }
-  const handleSubValue = () => {
-    setValue(value === 0 ? 0 : value - 1)
+  const handleSubValue = (item) => {
+    dispatch({
+      type: 'SUB_ITEM_CART',
+      payload: {
+        id: item.id,
+        quant: item.quant - 1,
+      }
+    })
   }
 
+  const removeItemCart = (item) => {
+    dispatch({
+      type: 'REMOVE_ITEM_CART',
+      payload: {
+        id: item.id,
+      }
+    })
+  }
   const Change = (e) => {
     let change = e.target.value;
     setValue(parseInt(change));
   };
 
+
+
   return (
+    <> {cartItems.length > 0 ?
     <CartSection>
     <section className='cart-section'>
     <table>
       <tbody className='cart-container'>
-          <tr>
-            <td><img src={Pc} className='cart-img' /></td>
-            <td><h2>Cobault</h2></td>
+        {cartItems.map((item) => (
+
+          <tr key={item.id}>
+            <td><img src={item.img} className='cart-img' /></td>
+            <td><h2>{item.title}</h2></td>
             <td></td> 
             <td className='cart-counter'>
-              <button onClick={handleSubValue}>
+              <button onClick={() => handleSubValue(item)}>
                 <Minus/>
               </button>
-              <input type="number" className='input-counter' value={value} onChange={Change}/>
-              <button onClick={handleSumValue}>
+              <input type="number" className='input-counter' value={item.quant} onChange={Change}/>
+              <button onClick={()=> handleSumValue(item)}>
                 <Plus/>
               </button>
             </td>
-            <td className='price'><p><span>$</span>1.500<span>,00</span></p></td>
-            <td className='cart-trash'><button><Trash /></button></td>
+            <td className='price'><p><span>$</span>{item.price}<span>,00</span></p></td>
+            <td className='cart-trash'><button onClick={() => removeItemCart(item)}><Trash /></button></td>
           </tr>
+          ))}
       </tbody>
     </table>
     </section>
@@ -67,6 +98,8 @@ export function Cart() {
         </div>
       </aside>
     </section>
-   </CartSection>
+   </CartSection> 
+   : <NotExist content="The cart is empty" haveButton={true} textButton="Buy Products" linkButton="/products"/>}
+   </>
   )
 }

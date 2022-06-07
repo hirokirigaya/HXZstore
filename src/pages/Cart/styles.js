@@ -15,12 +15,13 @@ export const CartSection = styled.main`
     max-width: 900px;
 
     table {
-      background-color: ${(props) => props.theme.dark};
       width: 100%;
     }
 
     .cart-container {
       display: flex;
+      flex-direction: column;
+      gap: 2rem;
       color: ${(props) => props.theme.primary};
 
       .price {
@@ -97,9 +98,12 @@ export const CartSection = styled.main`
       }
 
       tr {
+        background-color: ${(props) => props.theme.dark};
         display: flex;
         align-items: center;
+        padding: .5rem;
         width: 100%;
+        border-radius: 4px;
       }
 
       .cart-img {
@@ -153,7 +157,7 @@ export const CartSection = styled.main`
         }
 
         .dark-btn:hover {
-          background-color: #0E1116;
+          background-color: #0e1116;
         }
 
         button {
@@ -221,7 +225,7 @@ export const CartSection = styled.main`
 
       .checkout-btn {
         button:hover {
-         background-color: #0E1116;
+          background-color: #0e1116;
         }
       }
     }

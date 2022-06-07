@@ -12,33 +12,39 @@ import { Products } from './pages/Products'
 import { Register } from './pages/Register'
 import { Cart } from './pages/Cart'
 import { Footer } from './components/Footer'
+import { CartProvider } from './providers/useProducts'
 
+import Cookie from 'js-cookie'
+import { Page404 } from './pages/Page404'
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  
+  const [isDarkMode, setIsDarkMode] = useState(Cookie.get('isDarkMode') === 'true')
+
   const toggleTheme = () => {
-   setIsDarkMode(!isDarkMode)
+    setIsDarkMode(!isDarkMode)
+    Cookie.set('isDarkMode', !isDarkMode)
   }
 
   return (
-   <ThemeProvider theme={isDarkMode ? theme.dark : theme.light}>
-     <GlobalStyle/>
-     
-     <Router>
-        <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode}/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/products/:product' element={<Product/>}/>
-        <Route path='/products' element={<Products/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-      </Routes>
-        <Footer />
-     </Router>
-   </ThemeProvider>
+    <CartProvider>
+      <ThemeProvider theme={isDarkMode ? theme.dark : theme.light}>
+        <GlobalStyle />
+        <Router>
+          <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/:product" element={<Product />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </CartProvider>
   )
 }
 
-export default App;
+export default App

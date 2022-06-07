@@ -31,7 +31,7 @@ export function Home() {
           <div className="text">
             <div className="content-text">
               <h1>Let's Build</h1>
-              <p>Your Game computer online now!</p>
+              <p>Your Gaming computer online now !</p>
               <Link to="/register">
                 <button className="button">
                   get started

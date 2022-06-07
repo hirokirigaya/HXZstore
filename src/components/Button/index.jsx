@@ -20,6 +20,6 @@ const Button = styled.button`
 
 export function ButtonForm(props) {
   return (
-    <Button>{props.text}</Button>
+    <Button {...props.buttonProps}>{props.text}</Button>
   )
 }

@@ -25,9 +25,15 @@ export const ContainerSlider = styled.section`
   }
 
   p {
-    font-size: 3rem;
+    font-size: 2.4rem;
     padding-top: 0.5rem;
     color: #fff;
+  }
+
+  @media (min-width: 600px){
+    p {
+      font
+    }
   }
 
   .leftarrow,
