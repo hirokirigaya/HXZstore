@@ -8,7 +8,7 @@ export const Container = styled.main`
     display: none;
     pointer-events: all;
   }
-  
+
   .content {
     width: 100%;
     height: 100%;
@@ -42,6 +42,11 @@ export const Container = styled.main`
         background-color: transparent;
         color: ${(props) => props.theme.primary};
         font-weight: 600;
+
+        option {
+         background-color: ${(props) => props.theme.bg};
+         color: ${(props) => props.theme.primary};
+        }
       }
 
       .filter-mobile {
@@ -52,7 +57,7 @@ export const Container = styled.main`
         transform: rotateY(0deg);
         width: calc(100vw - 48px);
       }
-      .filter-mobile.off{
+      .filter-mobile.off {
         opacity: 0;
         transform: rotateY(30deg);
         pointer-events: none;
@@ -67,7 +72,6 @@ export const Container = styled.main`
           display: none;
         }
       }
-      
     }
     .container-products {
       display: flex;
@@ -81,6 +85,11 @@ export const Container = styled.main`
           margin-bottom: 3rem;
           a {
             text-decoration: none;
+            transition: filter ease-in-out 0.3s;
+
+            &:hover {
+              filter: brightness(1.3);
+            }
 
             img {
               width: 100%;

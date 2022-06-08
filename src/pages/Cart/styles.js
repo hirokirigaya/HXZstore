@@ -141,6 +141,7 @@ export const CartSection = styled.main`
       background-color: ${(props) => props.theme.dark};
       color: ${(props) => props.theme.primary};
       padding: 3.5rem 2rem;
+      border-radius: 4px;
 
       .button-aside {
         display: flex;
@@ -149,18 +150,20 @@ export const CartSection = styled.main`
 
         .pink-btn {
           background-color: #ff5e5e;
-        }
+          transition: filter ease-in-out 0.3s;
 
-        .pink-btn:hover {
-          background-color: #ff5e7e;
+          &:hover {
+            filter: brightness(0.8);
+          }
         }
 
         .dark-btn {
           background-color: #0a090e;
-        }
+          transition: filter ease-in-out 0.3s;
 
-        .dark-btn:hover {
-          background-color: #0e1116;
+          &:hover {
+            filter: brightness(0.8);
+          }
         }
 
         button {
@@ -223,13 +226,14 @@ export const CartSection = styled.main`
           border-radius: 4px;
           color: #ffffff;
           font-weight: 600;
-        }
-      }
+          transition: filter ease-in-out 0.3s;
 
-      .checkout-btn {
-        button:hover {
-          background-color: #0e1116;
+
+          &:hover {
+              filter: brightness(0.8);
+            }
         }
+
       }
     }
   }

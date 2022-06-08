@@ -65,14 +65,16 @@ export const Container = styled.main`
           font-weight: bold;
           font-size: 1.8rem;
           text-transform: uppercase;
+          transition: filter ease-in-out 0.3s;
+
+
+          &:hover {
+            filter: brightness(0.8);
+          }
           
           svg {
             color: #ffffff;
           }
-        }
-
-        button:hover {
-          background-color:  #333d43;
         }
       }
     }
@@ -97,6 +99,11 @@ export const Container = styled.main`
 
       a {
         text-decoration: none;
+        transition: filter ease-in-out .3s;
+
+        &:hover {
+          filter: brightness(1.3);
+        }
       }
 
       .pcone {

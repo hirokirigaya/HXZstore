@@ -46,7 +46,7 @@ export function Cart() {
     let change = e.target.value;
     setValue(parseInt(change));
   };
-
+  // console.log(cartItems.filter(item => item))
 
 
   return (
@@ -93,7 +93,7 @@ export function Cart() {
             <input type="number" placeholder='cvv' />
           </div>
           <div className='checkout-btn'>
-            <p>total</p>
+            {/* <p>total</p> */}
             <button>checkout</button>
           </div>
           </div>

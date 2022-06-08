@@ -27,7 +27,7 @@ function App() {
 
   return (
     <CartProvider>
-      <ThemeProvider theme={isDarkMode ? theme.dark : theme.light}>
+      <ThemeProvider theme={isDarkMode ? theme.light : theme.dark}>
         <GlobalStyle />
         <Router>
           <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />

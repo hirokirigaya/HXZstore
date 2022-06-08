@@ -50,9 +50,29 @@ export const Header = styled.header`
         border: none;
         background: transparent;
         color: ${(props) => props.theme.primary};
+        text-decoration: none;
 
         
+        #cart {
+          position: relative;
+          p {
+            background-color: ${({theme}) => theme.pink};
+            border-radius: 50px;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            bottom: 70%;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+            span {
+              color: ${({theme}) => theme.primary};
+              font-size: 1.2rem;
+            }
+          }
+        }
         .user {
           color: ${(props) => props.theme.primary};
           border: none;

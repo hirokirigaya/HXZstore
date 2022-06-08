@@ -1,6 +1,6 @@
 import { Header, Overlay } from './styles'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   FiAlignLeft as Menu,
   FiUser as User,
@@ -10,6 +10,7 @@ import {
   FiMoon as Moon,
   FiSun as Sun,
 } from 'react-icons/fi'
+import { cartStore } from '../../providers/useProducts'
 
 const navigationLinks = [
   {
@@ -25,7 +26,7 @@ const navigationLinks = [
   {
     id: 3,
     name: 'ABOUT',
-    link: '/',
+    link: '/about',
   },
 ]
 
@@ -33,6 +34,9 @@ export function Navbar({ toggleTheme, isDarkMode }) {
   const [open, setOpen] = useState(false)
 
   const [dropdown, setDropdown] = useState(false)
+
+  const {state} = useContext(cartStore)
+  const haveProducts = state.cart.cartItems.length
 
   const toggleMenu = () => {
     setOpen(!open)
@@ -65,6 +69,7 @@ export function Navbar({ toggleTheme, isDarkMode }) {
                       key={item.id}
                       style={{
                         opacity: 0,
+                        filter: index ? 'opacity(0.7)' : 'opacity(1)',
                         animation: open
                           ? `navLinkAnimation ${
                               index / 7 + 0.5
@@ -81,7 +86,10 @@ export function Navbar({ toggleTheme, isDarkMode }) {
           </div>
           <div className="container-icons">
             <button className="buttons">
-              <Link to="/cart"  className="buttons">
+              <Link to="/cart"  className="buttons" id='cart'>
+                {haveProducts > 0 &&
+                <p className='item-cart'><span>{haveProducts}</span></p>
+                }
                 <Cart />
               </Link>
             </button>
