@@ -25,7 +25,7 @@ export const ContainerSlider = styled.section`
   }
 
   p {
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     padding-top: 0.5rem;
     color: #fff;
   }
