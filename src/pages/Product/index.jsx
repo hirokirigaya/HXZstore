@@ -40,7 +40,6 @@ export function Product() {
   const productId = params.product
   
   const product = products?.filter((product) => product.slug === productId)
-    console.log(product)
   return (
     <>
       {isLoading && <Loading/> } 

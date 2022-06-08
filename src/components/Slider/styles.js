@@ -32,7 +32,7 @@ export const ContainerSlider = styled.section`
 
   @media (min-width: 600px){
     p {
-      font
+      font-size: 3rem;
     }
   }
 
